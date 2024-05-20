@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+
+<title>TTA - New Ticket Form</title>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" th:href="@{/}"> <svg class="mb-2"
+				stroke="currentColor" fill="currentColor" stroke-width="0"
+				viewBox="0 0 640 512" height="1em" width="1em"
+				xmlns="http://www.w3.org/2000/svg">
+            <path
+					d="M48 0C21.5 0 0 21.5 0 48V464c0 26.5 21.5 48 48 48h96V432c0-26.5 21.5-48 48-48s48 21.5 48 48v80h89.9c-6.3-10.2-9.9-22.2-9.9-35.1c0-46.9 25.8-87.8 64-109.2V271.8 48c0-26.5-21.5-48-48-48H48zM64 240c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V240zm112-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16V240c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V240zM80 96h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16V112zM272 96h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16zM576 272a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM352 477.1c0 19.3 15.6 34.9 34.9 34.9H605.1c19.3 0 34.9-15.6 34.9-34.9c0-51.4-41.7-93.1-93.1-93.1H445.1c-51.4 0-93.1 41.7-93.1 93.1z"></path>
+        </svg> Ticket Tracker App
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active"><a class="nav-link" th:href="@{/}">All
+						Tickets <span class="sr-only">(current)</span>
+				</a></li>
+			</ul>
+			<a th:href="@{/create-new-ticket}"
+				class="btn btn-light btn-sm ml-lg-2"> New Ticket </a>
+		</div>
+	</nav>
+
+	<div class="container mt-4">
+		<div class="row">
+			<div
+				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card shadow-lg rounded">
+				<h1 class="text-center mt-4">Create New Ticket</h1>
+				<div class="card-body">
+					<form th:action="@{/save-new-ticket}" th:object="${ticket}"
+						method="POST">
+						<input type="hidden" th:field="*{id}" />
+						<div class="form-group">
+							<label> Title </label> <input type="text" name="title"
+								th:field="*{title}" class="form-control"
+								placeholder="Enter Title" />
+
+						</div>
+						<div class="form-group">
+							<label> Short Description </label> <input type="text"
+								name="description" th:field="*{description}"
+								class="form-control" placeholder="Enter Description" />
+						</div>
+
+						<div class="form-group">
+							<label> Content </label>
+							<textarea id="editor" name="content" th:field="*{content}"
+								class="form-control" placeholder="Enter Content" />
+						</div>
+
+
+
+						<div class="box-footer">
+							<button type="submit" class="btn btn-dark mr-3">Save</button>
+							<a class="btn btn-light" th:href="@{/}">Go back</a>
+						</div>
+					</form>
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- CKEditor script -->
+	<script
+		src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+	<script>
+		ClassicEditor
+			.create(document.querySelector('#editor'), {placeholder: 'Enter Content in html' })
+			.catch(error => {
+				console.error(error);
+			});
+	</script>
+
+
+</body>
+
+</html>

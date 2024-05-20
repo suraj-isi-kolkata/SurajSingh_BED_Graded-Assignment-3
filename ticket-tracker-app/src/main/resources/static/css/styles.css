@@ -1,0 +1,8 @@
+.table-fixed-height td {
+	height: 100px; /* Adjust the height as needed */
+	max-height: 100px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	vertical-align: middle;
+}

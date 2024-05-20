@@ -1,0 +1,7 @@
+com\tta\utils\Utils.class
+com\tta\controller\TicketController.class
+com\tta\repository\TicketRepository.class
+com\tta\service\TicketService.class
+com\tta\service\TicketServiceImpl.class
+com\tta\TicketTrackerAppApplication.class
+com\tta\entity\Ticket.class

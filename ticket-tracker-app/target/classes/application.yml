@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: ticket-tracker-app
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ticket_tracker_gl?createDatabaseIfNotExist=true
+    username: root
+    password: IDontKnow24@
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true 
+    
+server:
+  port: 8800
+
